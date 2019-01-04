@@ -1,1 +1,14 @@
+#Create a Virtual Environment
 python3 -m venv TEST
+
+#Activate the Virtual Environment
+source TEST/bin/activate
+
+#Install Packages
+pip install numpy
+
+#Upgrade version for existing package
+pip install --upgrade pip
+
+#Fire up Python
+python
