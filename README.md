@@ -1,2 +1,2 @@
 # CheatSheets-python
-My personal Cheat Sheet. User at your own risk 
+My personal Cheat Sheet. Use at your own risk 
