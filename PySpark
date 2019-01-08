@@ -1,0 +1,27 @@
+#Import Packages that you will need
+from pyspark.sql.functions import when,col 
+
+#Load a parquet file 
+df = spark.read.load("/path/to/parquet")
+
+#using when and col to change the gender to M if it sees CH000034 in the column for mapped_gender
+b = df.select('dcdr_grp_mpi','dob','first_name','groupid','grp_mpi','last_name','mapped_ethnicity','mapped_gender','mapped_race','mapped_zipcode','ptid','ssn','address_line1', 'address_line2', (when(col("mapped_gender") == 'CH000033', 'F')
+.when(col("mapped_gender") == 'CH000034', 'M')
+.otherwise('U')))
+
+#A more efficient way of doing the above easier, this helps in not typing all the column names and just the * which will grab all columns in the dataframe
+b = df.select('*', (when(col("mapped_gender") == 'CH000033', 'F')
+.when(col("mapped_gender") == 'CH000034', 'M')
+.otherwise('U')))
+
+#Change the column name
+c = b.withColumnRenamed("CASE WHEN (mapped_gender = CH000033) THEN F WHEN (mapped_gender = CH000034) THEN M ELSE U END","gender_mapped")
+  
+#Drop a column
+d = c.drop("mapped_gender")
+  
+#Realigning Data
+f = e.select('dcdr_grp_mpi','dob','first_name','groupid','grp_mpi','last_name','mapped_ethnicity','mapped_gender','mapped_race','mapped_zipcode','ptid','ssn','address_line1','address_line2')
+  
+#Write files in CSV
+f.write.csv("/user/anair/final/")
