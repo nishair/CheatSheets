@@ -25,3 +25,6 @@ f = e.select('dcdr_grp_mpi','dob','first_name','groupid','grp_mpi','last_name','
   
 #Write files in CSV
 f.write.csv("/user/anair/final/")
+
+#See what columns a dataframe has 
+df.columns
