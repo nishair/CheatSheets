@@ -1,0 +1,42 @@
+#check for version of modules
+pip freeze | grep pyspark
+
+#Find all .txt files
+find . -type f -name "*.txt"
+
+#Send files from local machine to remote server
+scp interface.properties anair@som-datavant-p01:/users/anair/
+#WHERE encrypt.sh is the name of the file and anair@som-datavant-p01 is the location
+
+#Send an entire folder from local machine to remote server
+scp -r Optum-deid_batch_self_external-4.20171130.1 anair@som-datavant-p01:/users/anair/
+
+#Find how much space you have on the server
+df -h /users/anair
+
+#Change the ownership of a file
+chown svc_datavant PANTHER_PHI_201808.gz
+#Where svc_datavant is the name of the 
+
+#Unzip a .gz file
+gzip -d /users/anair/PANTHER_PHI_201808.gz
+
+#Find the file size in hum readable format 
+du -h /users/anair/PANTHER_PHI_201808.csv
+
+#Delete a directory
+rm -rf Optum-deid_batch_self_external-4.20171130.1/
+#R for recursively deleting and f for not prompting or forcing
+
+#Copy from one directory to another
+cp -a /users/anair/PANTHER_PHI_201808/. /mnt/datavant/optum/data/
+
+#Dos to unix
+sed 's/\r$//' link.sh > linking.sh
+
+#Copy from HDFS to your local directory 
+hadoop fs -copyToLocal /user/anair/final/PANTHER_PHI_201808/
+
+hadoop fs -cat /optum/crossix/pan_ther/201808/output/PANTHER_PATIENT_MATCHING_COMPRESSED/PANTHER_PHI_201808.gz | ssh anair@som-datavant-p01 'cat > /mnt/datavant/PANTHER_PHI_201808.gz'
+
+
