@@ -28,3 +28,6 @@ f.write.csv("/user/anair/final/")
 
 #See what columns a dataframe has 
 df.columns
+
+#Change multiple column names
+df2 = (df1.withColumnRenamed('ENROLLEE_ID','GROUPID').withColumnRenamed('INDIVIDUAL_ID','GRP_MPI').withColumnRenamed('PHI_NAME','mapped_ethnicity').withColumnRenamed('MEDICARE_ID','mapped_race').withColumnRenamed('ALT_ID','PTID'))
