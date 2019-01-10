@@ -39,4 +39,12 @@ hadoop fs -copyToLocal /user/anair/final/PANTHER_PHI_201808/
 
 hadoop fs -cat /optum/crossix/pan_ther/201808/output/PANTHER_PATIENT_MATCHING_COMPRESSED/PANTHER_PHI_201808.gz | ssh anair@som-datavant-p01 'cat > /mnt/datavant/PANTHER_PHI_201808.gz'
 
+#Create a screen which will help in closing the window 
+screen -S session_name
+
+#Detach a screen 
+Control+A and Control+D
+
+#Reconnect to a screen 
+screen -r session_name
 
