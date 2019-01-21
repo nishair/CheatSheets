@@ -1,0 +1,5 @@
+SELECT t1.Id
+FROM Weather
+INNER JOIN Weather t1
+ON Weather.Temperature < t1.Temperature
+AND DATEDIFF(t1.RecordDate, Weather.RecordDate) = 1
