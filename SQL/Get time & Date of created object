@@ -1,0 +1,5 @@
+SELECT created
+  FROM all_objects
+ WHERE object_name LIKE 'W_LABRESULT_LOCALNAME'
+   AND owner = 'STAGE_WHITELIST'
+   AND object_type = 'TABLE'
